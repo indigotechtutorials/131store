@@ -1,0 +1,17 @@
+<div class="w-full min-h-screen flex flex-col items-center pt-10 bg-gray-800">
+  <div class="w-1/5 h-8 flex justify-end">
+    <%= link_to "edit item", edit_product_path, :class => "text-white text-2xl underline cursor-pointer bg-transparent text-white hover:text-gray-400" %>
+  </div>
+  <h1 class="text-6xl text-white plants mb-4"><%= @product.title %></h1>
+  <div class="w-full h-full flex justify-around" data-controller="carousel">
+    <% @product.images.each.with_index do |image, index| %>
+      <div class="image flex hidden" data-target="carousel.image" id="image-<%= index %>" data-index="<%= index %>">
+        <%= image_tag(image, :class => "w-full h-full") %>
+        <div class="carousel-buttons h-10 flex justify-between items-center px-4 absolute ">
+          <a data-action="carousel#previousImage" class="text-white text-5xl hover:text-gray-600 transition-all duration-200 cursor-pointer"><</a>
+          <a data-action="carousel#nextImage" class="text-white text-5xl hover:text-gray-600 transition-all duration-200 cursor-pointer">></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

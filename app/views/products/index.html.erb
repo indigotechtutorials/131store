@@ -1,0 +1,24 @@
+<div class="main-page">
+  <h1 class="text-6xl text-white">ONE THREE ONE COUNCIL SHOP</h1>
+</div>
+<div class="min-h-screen w-full bg-gray-700 flex flex-col items-center py-10">
+  <h2 class="text-6xl text-white plants mb-10">New Releases</h2><br>
+  <div class="releases-card border-t-2 border-black flex justify-between px-8 py-10 rounded" data-controller="animatehover">
+    <% @products.each.with_index do |product, index| %>
+      <div class="product-card shadow-2xl hover:shadow-none rounded bg-gray-300 flex flex-col items-center pt-6 transition-all duration-1000">
+        <div class="w-full h-8 pr-8 flex justify-end">
+        <%= button_to "X", product, method: :delete, :class => "bg-transparent cursor-pointer text-3xl text-red-500 font-bold",remote: true, data: {confirm: "Are you sure u want to delete this item"} %>
+        </div>
+        <%= link_to product do %>
+          <h2 class="text-3xl text-center mb-4 px-2"><%= product.title %> </h2><br />
+          <div class="image">
+            <div class="image-zoom flex justify-center items-center" data-id="<%= product.id %>" data-action="mouseover->animatehover#showButton mouseout->animatehover#showButton">
+                <%= image_tag(product.images[0],:class => "image") if product.images.attached? %>
+                <h2 data-target="animatehover.viewItemButton"class="px-6 py-1 bg-transparent border-2 hidden text-white text-xl rounded-sm shadow-lg border-indigo-300 absolute hover:bg-indigo-300 border-white transition-all duration-700">View Item</h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

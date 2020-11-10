@@ -1,0 +1,90 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+body {
+  height: 100%;
+  width: 100%;
+}
+.main-page {
+  height: 100vh;
+  width: 100%;
+  background-image: url("/onethreeone.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  padding-top: 8em;
+}
+
+
+.navbar {
+  height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+}
+
+.card {
+  height: 75vh;
+  width: 60em;
+}
+
+.releases-card {
+  min-height: 80em;
+  width: 85vw;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  height: 600px;
+  width: 500px;
+}
+.form {
+  height: 40vh;
+  width: 40em;
+}
+
+.image {
+  height: 300px;
+  width: 300px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-zoom {
+  transition: all 1000ms;
+}
+
+.image-zoom:hover {
+  transform: scale(1.07);
+  filter: brightness(75%);
+}
+.plants {
+  font-family: "plants";
+}
+
+// Carousel
+
+.carousel-buttons {
+  width: 300px;
+}
+
+
+// FORM
+
+.image-form {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+}
+
+.image-form-buttons {
+  width: 150px;
+}
+@font-face {
+   font-family: 'plants';
+   src: font-url('/assets/font');
+}

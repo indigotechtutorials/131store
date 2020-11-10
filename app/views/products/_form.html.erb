@@ -1,0 +1,45 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="form">
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, :class => "w-full pl-2 text-lg bg-gray-300 rounded-sm h-10 py-2" %>
+  </div>
+
+  <div class="field mt-4">
+    <%= form.label :price %>
+    <%= form.number_field :price, :class => "w-full pl-2 text-lg bg-gray-300 rounded-sm h-10 py-2"  %>
+  </div>
+
+
+  <div class="field mt-8">
+    <%= form.label :images %><br />
+    <%= form.file_field :images, multiple: true, :class => "w-full pl-2 text-lg bg-gray-300 rounded-sm min-h-10 py-2"  %>
+    <% if product.images.attached? %>
+      <div class="w-full h-full flex justify-around pt-10">
+        <% product.images.each.with_index do |image, index| %>        <div class="image-form flex items-start">
+            <%= image_tag(image, :class => "w-full h-full") %>
+            <a class="absolute text-3xl image-form-buttons pr-2 flex justify-end">
+              <%= index + 1 %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions mt-10">
+    <%= form.submit :class => "text-2xl border-2 border-indigo-700 px-4 py-1 bg-transparent hover:bg-pink-700 hover:border-blue-300  rounded-sm transition-all duration-1000" %>
+  </div>
+</div>
+<% end %>
